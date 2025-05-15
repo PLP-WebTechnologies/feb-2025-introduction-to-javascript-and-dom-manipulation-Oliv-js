@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation </title>
+</head>
+<body>
+    <header>
+        <h1>DOM Manipulation Demo</h1>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>Text Modification</h2>
+            <p id="changable-text">This text will change when you click the button.</p>
+            <button onclick="changeText()">Change Text Content</button>
+        </section>
+
+        <section class="content-section">
+            <h2>Style Modification</h2>
+            <div id="style-demo">
+                This section's style will change
+            </div>
+            <button onclick="toggleStyles()">Toggle Background Color</button>
+        </section>
+
+        <section class="content-section">
+            <h2>Element Management</h2>
+            <div id="list-container">
+                <ul id="item-list">
+                    <li>Initial Item 1</li>
+                    <li>Initial Item 2</li>
+                </ul>
+            </div>
+            <button onclick="addItem()">Add List Item</button>
+            <button onclick="removeItem()">Remove List Item</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DOM Manipulation Exercise</p>
+    </footer>
+
+    <script>
+       // Text content modification
+function changeText() {
+    const textElement = document.getElementById('changable-text');
+    textElement.textContent = "Text successfully changed! " + new Date().toLocaleTimeString();
+}
+
+// CSS style modification
+function toggleStyles() {
+    const styleDemo = document.getElementById('style-demo');
+    styleDemo.style.backgroundColor = 
+        styleDemo.style.backgroundColor === 'lightblue' ? 'lightcoral' : 'lightblue';
+    styleDemo.style.padding = '20px';
+    styleDemo.style.borderRadius = '8px';
+}
+
+// Element addition
+function addItem() {
+    const list = document.getElementById('item-list');
+    const newItem = document.createElement('li');
+    newItem.textContent = 'New Item ' + (list.children.length + 1);
+    list.appendChild(newItem);
+}
+
+// Element removal
+function removeItem() {
+    const list = document.getElementById('item-list');
+    if (list.children.length > 0) {
+        list.removeChild(list.lastElementChild);
+    }
+} 
+    </script>
+</body>
+</html>
